@@ -11,8 +11,8 @@ public class Card {
     private Long id;
     @Column(unique = true)
     private String number;
-    @Column(name = "available_limit" , scale = 13, precision = 2)
-    private BigDecimal limit;
+    @Column(name = "available_limit" , precision = 13, scale = 2)
+    private BigDecimal limit; //99.999.999.999,99
 
     public Long getId() {
         return id;
