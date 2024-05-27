@@ -19,6 +19,8 @@ Java RESTful API criada para a Santander Dev Week.
 
 O Figma foi utilizado para a abstração do domínio desta API, sendo útil na análise e projeto da solução.
 
+## Link da api:  https://sdw-2023-api-prd-6228.up.railway.app/swagger-ui/index.html
+
 ## Gerando Diagrama de classe com ChatGpt
 
 Prompt usado:
