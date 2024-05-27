@@ -93,7 +93,56 @@ classDiagram
   User "1" *-- "N" News
 ```
 
-## IMPORTANTE
+### Explicação do application-dev.yml
 
-Este projeto foi construído com um viés totalmente educacional através da plataforma de cursos da DIO.
+```yaml
+spring:
+  datasource:
+    url: jdbc:h2:mem:sdw2023
+    username: sdw2023
+    password:
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: create # validate | update | create | create-drop
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+```
+OBS.: Validar a sintaxe do yml caso tenha erro :)
 
+### Explicação Detalhada:
+
+- `spring.datasource`: Configurações relacionadas ao banco de dados.
+    - `url`: A URL JDBC para o banco de dados H2 em memória.
+    - `username`: Nome de usuário para acessar o banco de dados.
+    - `password`: Senha para acessar o banco de dados (deixado em branco, ou seja, sem senha).
+
+- `spring.jpa`: Configurações específicas para o JPA e o Hibernate.
+    - `show-sql`: Quando `true`, as consultas SQL geradas serão exibidas no console.
+    - `open-in-view`: Quando `false`, desabilita a prática de manter a sessão Hibernate aberta durante a renderização da view, o que pode prevenir problemas de gerenciamento de sessão em aplicações web.
+    - `hibernate.ddl-auto`: Controla a estratégia de gerenciamento de schema do banco de dados:
+        - `validate`: Apenas valida o schema existente.
+        - `update`: Atualiza o schema, aplicando mudanças incrementais.
+        - `create`: Cria o schema do zero a cada inicialização.
+        - `create-drop`: Cria o schema ao iniciar e o remove ao finalizar.
+    - `properties.hibernate.format_sql`: Quando `true`, formata as instruções SQL geradas para melhor legibilidade.
+
+- `spring.h2.console`: Configurações para o console web do H2.
+    - `enabled`: Quando `true`, habilita o console web do H2.
+    - `path`: Define o caminho para acessar o console web do H2.
+    - `settings.trace`: Quando `false`, desabilita o rastreamento detalhado (útil para depuração).
+    - `settings.web-allow-others`: Quando `false`, restringe o acesso ao console web do H2 apenas para conexões locais.
+
+### Definindo o profile de trabalho no intelliI IDEA
+> Edit configuration(Run/Debug configuration) > Profile: 
+> SPRING_PROFILES_ACTIVE=dev 
+> | ou só dev (ultimate)
