@@ -200,6 +200,18 @@ public class Application {
 
 }
 ```
+5° - Quando subir pela primeira vez mudar o  `ddl-auto: validate` | update | create | create-drop
+```
+spring:
+  datasource:
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+```
 
 ### Diferenciar perfil de DEFAULT x DEV x PRD  no railway
  - Nosso projeto já tẽm os arquivos `application-dev.yml | application-prd.yml`
